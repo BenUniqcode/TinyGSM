@@ -50,7 +50,7 @@ typedef TinyGsmSim7080::GsmClientSecureSIM7080 TinyGsmClientSecure;
 typedef TinyGsmSim5360                   TinyGsm;
 typedef TinyGsmSim5360::GsmClientSim5360 TinyGsmClient;
 
-#elif defined(TINY_GSM_MODEM_SIM7600) || defined(TINY_GSM_MODEM_SIM7800) || \
+#elif defined(TINY_GSM_MODEM_SIM7600) || defined(TINY_GSM_MODEM_SIM7672) || defined(TINY_GSM_MODEM_SIM7800) || \
     defined(TINY_GSM_MODEM_SIM7500)
 #include "TinyGsmClientSIM7600.h"
 typedef TinyGsmSim7600                   TinyGsm;
