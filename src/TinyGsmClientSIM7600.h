@@ -214,6 +214,12 @@ class TinyGsmSim7600 : public TinyGsmModem<TinyGsmSim7600>,
     sendAT(GF("+CGMM"));
     String res2;
     if (waitResponse(1000L, res2) != 1) { return name; }
+#ifdef TINY_GSM_MODEM_SIM7672
+    // The SIM7672 shows the name *after* the OK
+    // Unfortunately it has no URC prefix
+    // Look for the end of the model number, which is always NGV
+    if (waitResponse(1000L, res2, "NGV") != 1) { return name; }
+#endif
     res2.replace(GSM_NL "OK" GSM_NL, "");
     res2.replace("_", " ");
     res2.trim();
