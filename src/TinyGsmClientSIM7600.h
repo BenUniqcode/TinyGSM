@@ -768,7 +768,9 @@ class TinyGsmSim7600 : public TinyGsmModem<TinyGsmSim7600>,
     uint8_t  index       = 0;
     uint32_t startMillis = millis();
     do {
+      TINY_GSM_YIELD();
       while (stream.available() > 0) {
+        TINY_GSM_YIELD();
         int8_t a = stream.read();
         if (a <= 0) continue;  // Skip 0x00 bytes, just in case
         data += static_cast<char>(a);
@@ -829,7 +831,6 @@ class TinyGsmSim7600 : public TinyGsmModem<TinyGsmSim7600>,
           data = "";
         }
       }
-      TINY_GSM_YIELD();
     } while (millis() - startMillis < timeout_ms);
   finish:
     if (!index) {
