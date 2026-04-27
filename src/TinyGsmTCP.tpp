@@ -156,7 +156,7 @@ class TinyGsmTCP {
     }
 
     int read(uint8_t* buf, size_t size) override {
-      TINY_GSM_YIELD();
+      // TINY_GSM_YIELD(); // BW: This is pointless, and massively slows downloads if TINY_GSM_YIELD_MS is >0
       size_t cnt = 0;
 
 #if defined TINY_GSM_NO_MODEM_BUFFER
